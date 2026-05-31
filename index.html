@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1a1025">
+  <title>The Crochet Heavenn | Premium Bespoke Art</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#1a1025',
+              card: '#2D2338',
+              gold: '#D4AF37',
+              goldlight: '#F3E5AB',
+              text: '#Eaeaea'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { 
+      background-color: theme('colors.brand.dark'); 
+      color: theme('colors.brand.text');
+      overflow-x: hidden;
+    }
+
+    .bg-amethyst-glow {
+      background: radial-gradient(circle at 50% 20%, #3a284c 0%, #1a1025 60%);
+      background-attachment: fixed;
+    }
+    
+    .misty-glow {
+      background: radial-gradient(ellipse at center, rgba(234,234,234,0.15) 0%, transparent 70%);
+    }
+
+    .golden-text {
+      background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #C59341 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .card-dark {
+      background: #2D2338;
+      border: 1px solid rgba(212,175,55,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .card-dark:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212,175,55,0.3);
+    }
+
+    .gallery-grid {
+      column-count: 2;
+      column-gap: 12px;
+      padding: 0 12px;
+    }
+    @media (min-width: 768px) { .gallery-grid { column-count: 3; column-gap: 20px; padding: 0 20px; } }
+    
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: #0f0a16;
+      border: 1px solid rgba(212,175,55,0.15);
+    }
+    @media (min-width: 768px) { .gallery-item { margin-bottom: 20px; } }
+    
+    .gallery-img { 
+      width: 100%; 
+      display: block; 
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
+    }
+
+    .swipe-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 30px 20px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .swipe-track::-webkit-scrollbar { display: none; }
+    .swipe-item {
+      scroll-snap-align: center;
+      flex: 0 0 85%;
+      max-width: 340px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-amethyst-glow selection:bg-brand-gold selection:text-brand-dark">
+
+  <nav class="fixed top-0 w-full z-40 bg-[#1a1025]/90 backdrop-blur-md border-b border-brand-gold/10">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 rounded-xl border border-brand-gold/40 flex items-center justify-center bg-brand-card shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+          <span class="font-serif text-brand-gold font-bold text-lg">CH</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif font-black text-brand-goldlight tracking-[0.2em] text-[13px] uppercase leading-none">The Crochet</span>
+          <span class="font-serif font-bold text-white tracking-[0.3em] text-[10px] uppercase leading-none mt-1">Heavenn</span>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/the_crochet_heavenn" target="_blank" class="w-10 h-10 rounded-xl border border-brand-gold/30 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-dark transition-colors text-lg">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+  </nav>
+
+  <section class="relative pt-40 pb-20 px-6 flex flex-col items-center text-center min-h-[85vh] justify-center overflow-hidden">
+    <div class="inline-flex items-center py-2 px-5 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-goldlight tracking-[0.25em] uppercase text-[10px] font-bold mb-8 reveal shadow-[0_0_20px_rgba(212,175,55,0.1)]">
+      <i class="fa-solid fa-gem mr-2"></i> Handcrafted Art
+    </div>
+    
+    <h1 class="font-serif text-5xl md:text-7xl font-black leading-[1.15] mb-6 reveal text-white" style="transition-delay: 100ms;">
+      Your Vision,<br>
+      <span class="golden-text italic">Crocheted.</span>
+    </h1>
+    
+    <p class="text-gray-300 text-sm md:text-lg font-light mb-12 max-w-lg mx-auto leading-relaxed reveal" style="transition-delay: 200ms;">
+      From bespoke customized pieces to hyper-detailed creations. We hand-stitch your dreams to absolute perfection.
+    </p>
+  </section>
+
+  <section class="py-24 relative z-10 misty-glow">
+    <div class="max-w-7xl mx-auto">
+      <div class="px-6 reveal mb-8 text-center">
+        <span class="golden-text tracking-[0.3em] uppercase text-[10px] font-bold block mb-3">Social Proof</span>
+        <h2 class="font-serif text-3xl md:text-5xl text-white font-light">Client Experiences</h2>
+      </div>
+
+      <div class="swipe-track reveal pb-10">
+        <div class="swipe-item">
+          <div class="card-dark rounded-3xl p-8 h-full flex flex-col justify-between">
+            <div>
+              <i class="fa-solid fa-quote-left text-5xl text-brand-card absolute opacity-50 -z-10 -ml-2 -mt-2"></i>
+              <div class="flex gap-1 text-brand-gold text-sm mb-6">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-white text-[15px] font-light leading-relaxed">"Fasna allowed, bouquet itna cute jo hai ðŸŽ€. Absolutely stunning art."</p>
+            </div>
+            <div class="mt-8 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold/70 text-xl"><i class="fa-brands fa-instagram"></i></div>
+              <div>
+                <p class="text-white text-sm font-bold tracking-wide">Instagram DM</p>
+                <p class="text-brand-gold/60 text-[10px] uppercase tracking-widest font-bold">Direct Feedback</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swipe-item">
+          <div class="card-dark rounded-3xl p-8 h-full flex flex-col justify-between">
+            <div>
+              <div class="flex gap-1 text-brand-gold text-sm mb-6">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-white text-[15px] font-light leading-relaxed">"When flowers say 'forever'... and actually mean it!"</p>
+            </div>
+            <div class="mt-8 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold/70 text-xl"><i class="fa-brands fa-instagram"></i></div>
+              <div>
+                <p class="text-white text-sm font-bold tracking-wide">@maimoona_06_</p>
+                <p class="text-brand-gold/60 text-[10px] uppercase tracking-widest font-bold">Verified Collector</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swipe-item">
+          <div class="card-dark rounded-3xl p-8 h-full flex flex-col justify-between">
+            <div>
+              <div class="flex gap-1 text-brand-gold text-sm mb-6">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-white text-[15px] font-light leading-relaxed">"Took hours, but the bouquets won't wilt but will woww ðŸ’•ðŸ¤Œ"</p>
+            </div>
+            <div class="mt-8 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold/70 text-xl"><i class="fa-brands fa-instagram"></i></div>
+              <div>
+                <p class="text-white text-sm font-bold tracking-wide">@lulua_dakorwala</p>
+                <p class="text-brand-gold/60 text-[10px] uppercase tracking-widest font-bold">Verified Collector</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="py-24 relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center md:items-end px-6 mb-12 reveal text-center md:text-left">
+        <div>
+          <h2 class="font-serif text-4xl text-white">The Archive</h2>
+          <p class="text-brand-gold/70 text-sm mt-3 font-light tracking-widest uppercase">Elite Masterpieces</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid reveal" id="gallery-container">
+        <script>
+          // EXACT 30 Unique Masterpieces (Video & Cinematic Ads prioritized at the top)
+          const galleryMedia = [
+            '1000021840.mp4', // NEW: Floral Jewelry Video
+            '1000021853.jpg', // NEW: Rose Bag Cinematic Ad
+            '1000021833.jpg', // Hotdog Cinematic Ad
+            '1000021837.jpg', // Hanging Pot Cinematic Ad
+            '1000021855.jpg', // NEW: Monster 'A' Keychain
+            '1000021589.jpg', 
+            '1000021659.jpg', 
+            '1000021467.jpg', 
+            '1000021459.jpg', 
+            '1000021472.jpg', 
+            '1000021473.jpg', 
+            '1000021475.jpg', 
+            '1000021478.jpg', 
+            '1000021458.jpg', 
+            '1000021456.jpg', 
+            '1000021450.jpg', 
+            '1000021482.jpg', 
+            '1000021447.jpg', 
+            '1000021444.jpg', 
+            '1000021440.jpg', 
+            '1000021494.jpg', 
+            '1000021431.jpg', 
+            '1000021390.jpg', 
+            '1000021403.jpg', 
+            '1000021412.jpg', 
+            '1000021422.jpg', 
+            '1000021425.jpg', 
+            '1000021435.jpg', 
+            '1000021438.jpg', 
+            '1000021418.jpg' 
+          ];
+
+          const container = document.getElementById('gallery-container');
+
+          galleryMedia.forEach(src => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            
+            // Smart Logic: Detects if the file is a video or image
+            if(src.endsWith('.mp4')) {
+              div.innerHTML = `
+                <video src="${src}" class="gallery-img" autoplay loop muted playsinline onerror="this.parentElement.style.display='none'"></video>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none">
+                   <span class="text-brand-gold text-[10px] uppercase tracking-[0.2em] font-bold shadow-black drop-shadow-md"><i class="fa-solid fa-play-circle mr-1"></i> Cinematic Feature</span>
+                </div>
+              `;
+            } else {
+              div.innerHTML = `
+                <img src="${src}" class="gallery-img" alt="Bespoke Crochet Art" loading="lazy" onerror="this.parentElement.style.display='none'">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none">
+                   <span class="text-brand-gold text-[10px] uppercase tracking-[0.2em] font-bold shadow-black drop-shadow-md"><i class="fa-solid fa-check-circle mr-1"></i> Custom Piece</span>
+                </div>
+              `;
+            }
+            container.appendChild(div);
+          });
+        </script>
+      </div>
+
+      <div class="mt-16 text-center reveal flex justify-center">
+        <a href="https://www.instagram.com/the_crochet_heavenn" target="_blank" class="card-dark inline-flex items-center gap-3 text-white text-[12px] font-bold py-4 px-8 rounded-full uppercase tracking-[0.15em] transition-transform active:scale-95">
+          <i class="fa-brands fa-instagram text-2xl text-brand-gold"></i> <span>View Full Archive on Instagram</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#0f0a16] pt-16 pb-36 px-6 text-center border-t border-white/5 relative z-10">
+    <div class="max-w-md mx-auto reveal">
+      <h2 class="font-serif text-2xl text-white tracking-[0.2em] uppercase mb-2">The Crochet Heavenn</h2>
+      <p class="text-gray-500 text-xs font-light mb-8 tracking-widest uppercase">Premium Design Studio</p>
+      <p class="text-brand-gold/40 text-[9px] font-bold tracking-[0.4em] uppercase">Â© 2026 The Crochet Heavenn.</p>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 right-0 z-50 p-4 bg-[#1a1025]/95 backdrop-blur-xl border-t border-white/5 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+    <div class="max-w-3xl mx-auto flex items-center justify-between gap-4">
+      <a href="https://wa.me/919356015263?text=Hi%20@the_crochet_heavenn!%20I%20would%20love%20to%20commission%20a%20piece." 
+         target="_blank" 
+         class="flex-1 flex items-center justify-center gap-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-extrabold text-[13px] md:text-[14px] py-4 px-6 rounded-2xl transition transform active:scale-95 uppercase tracking-widest shadow-[0_5px_20px_rgba(37,211,102,0.3)]">
+         <i class="fa-brands fa-whatsapp text-xl"></i> <span>Secure Your Order</span>
+      </a>
+
+      <a href="https://www.instagram.com/the_crochet_heavenn" 
+         target="_blank" 
+         class="w-[56px] h-[52px] md:h-[56px] flex items-center justify-center bg-brand-card border border-brand-gold/20 text-brand-gold rounded-2xl transition transform active:scale-95 flex-shrink-0 shadow-lg hover:border-brand-gold/50">
+         <i class="fa-brands fa-instagram text-2xl"></i>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target); 
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
